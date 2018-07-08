@@ -19,6 +19,14 @@
     "importHelpers": true,
     "types": [ ],
     "outDir": "dist",
-    "rootDir": "src"
-  }
+    "rootDir": "src",
+    "baseUrl": ".",
+    "paths": {
+      "*": [ "node_modules/*"]
+    }
+  },
+  "exclude": [
+    "(/src/.*\\.(test|spec))\\.(ts|js)$",
+    "/src/.*/__mocks__/.*"
+  ]
 }
