@@ -1,4 +1,4 @@
-import { NpmCredentials } from './';
+import { NpmCredentials } from '.';
 
 export const buildNpmCredentials = (): NpmCredentials | undefined => {
 

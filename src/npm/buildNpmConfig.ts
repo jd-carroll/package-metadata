@@ -1,4 +1,4 @@
-import { NpmConfig } from './';
+import { NpmConfig } from '.';
 
 const npmConf = require('npm-conf');
 
