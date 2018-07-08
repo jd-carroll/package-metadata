@@ -1,0 +1,6 @@
+# Ignore everything
+*
+# except...
+!dist/**/*
+!package.json
+!*.md
