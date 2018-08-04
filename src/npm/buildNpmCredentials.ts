@@ -1,8 +1,11 @@
-import { NpmCredentials } from '.';
+import * as registryAuth from 'registry-auth-token';
 
-export const buildNpmCredentials = (): NpmCredentials | undefined => {
+export const buildNpmCredentials = (registryUrl: string): registryAuth.NpmCredentials | undefined => {
+  const options = {
+    recursive: true
+  };
 
-  return;
+  return registryAuth(registryUrl, options);
 };
 
 export default buildNpmCredentials;

@@ -1,3 +1,6 @@
+/**
+ * The shape of `package.json`
+ */
 export interface PackageJson {
   name: string;
   version: string;

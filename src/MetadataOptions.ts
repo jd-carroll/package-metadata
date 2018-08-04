@@ -1,3 +1,6 @@
+/**
+ * The available options for `RegistryClient.getMetadata`
+ */
 export interface MetadataOptions {
   /**
    * @deprecated Please use `allVersions` instead.

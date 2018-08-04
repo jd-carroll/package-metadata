@@ -35,7 +35,7 @@ export class RegistryClient {
    import * as util from 'util';
    const metadata = await RegistryClient.getMetadata('package-metadata', { version: '^1.0.0' });
    console.log(util.inspect(metadata, { depth: 1 }));
-   // { name: 'package-metadata', versions: { '^1.0.0': [PackageJson] } }
+   // >> { name: 'package-metadata', versions: { '^1.0.0': [PackageJson] } }
   ```
    *
    * @param packageName
@@ -47,7 +47,8 @@ export class RegistryClient {
     // Retrieve the current npm configuration
     const npmConfig = buildNpmConfig(scope);
     const packageNameUri = encodeURIComponent(packageName).replace(/^%40/, '@');
-    const metadataUrl = url.resolve(npmConfig.registry, packageNameUri);
+    const repo = npmConfig.registry.endsWith('/') ? npmConfig.registry : `${npmConfig.registry}/`;
+    const metadataUrl = url.resolve(repo, packageNameUri);
 
     const proxy = metadataUrl.startsWith('https:') ? npmConfig.proxy.https : npmConfig.proxy.http;
     const metadataType = opts.fullMetadata
@@ -58,7 +59,7 @@ export class RegistryClient {
       accept: metadataType
     };
 
-    const authInfo = buildNpmCredentials();
+    const authInfo = buildNpmCredentials(repo);
     if (authInfo != null) {
       headers.authorization = `${authInfo.type} ${authInfo.token}`;
     }
