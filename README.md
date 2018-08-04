@@ -1,0 +1,76 @@
+> Get metadata of a package from the configured npm registry
+
+## Install
+
+```
+$ npm install package-metadata
+```
+
+
+## Usage
+
+```js
+import { RegistryClient } from 'package-metadata';
+
+RegistryClient.getMetadata('package-metadata')
+  .then((metadata) => {
+    console.log(metadata);
+  });
+(async () => {
+  const metadata = await RegistryClient.getMetadata('@types/node');
+  console.log(metadata);
+})();
+```
+
+
+## RegistryClient API
+
+### getMetadata(name, [options])
+
+#### name
+
+Type: `string`
+
+Name of the package.
+
+#### options
+
+Type: `Object`
+
+##### version
+
+Type: `string`<br>
+Default: `latest`
+
+Package version such as `1.0.0` or a [dist tag](https://docs.npmjs.com/cli/dist-tag) such as `latest`.
+
+The version can also be in any format supported by the [semver](https://github.com/npm/node-semver) module. For example:
+
+- `1` - Get the latest `1.x.x`
+- `1.2` - Get the latest `1.2.x`
+- `^1.2.3` - Get the latest `1.x.x` but at least `1.2.3`
+- `~1.2.3` - Get the latest `1.2.x` but at least `1.2.3`
+
+##### fullMetadata
+
+Type: `boolean`<br>
+Default: `false`
+
+By default, only an abbreviated metadata object is returned for performance reasons. [Read more.](https://github.com/npm/registry/blob/master/docs/responses/package-metadata.md)
+
+##### allVersions
+
+Type: `boolean`<br>
+Default: `false`
+
+Return the [main entry](https://registry.npmjs.org/package-metadata) containing all versions.
+
+
+## Authentication
+
+Both public and private registries are supported, for both scoped and unscoped packages, as long as the registry uses either bearer tokens or basic authentication.
+
+
+## License
+
+MIT ©
