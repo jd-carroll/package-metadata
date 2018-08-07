@@ -6,6 +6,11 @@
   "types": "dist/index.d.ts",
   "license": "MIT",
   "author": "Joseph Carroll",
+  "homepage": "https://github.com/jd-carroll/package-metadata",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jd-carroll/package-metadata.git"
+  },
   "keywords": [
     "npm",
     "registry",
